@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading...</title>
+    <style>
+        body { 
+            margin: 0; 
+            background: black; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            overflow: hidden; 
+            font-family: sans-serif;
+        }
+        
+        /* Gaya Video */
+        #myVideo { 
+            max-width: 100vw; 
+            max-height: 100vh; 
+        }
+        
+        /* Skrin Meme (Mula-mula disorok) */
+        #trollScreen {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            background-color: #1a1a1a;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Gaya Gambar Meme */
+        #memeImg {
+            max-width: 90vw;
+            max-height: 65vh;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        /* Butang Next */
+        #nextBtn { 
+            padding: 15px 50px; 
+            font-size: 24px; 
+            font-weight: bold; 
+            background-color: #28a745; 
+            color: white; 
+            border: none; 
+            border-radius: 10px; 
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+        #nextBtn:hover { 
+            transform: scale(1.1); 
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video dimainkan secara manual -->
+    <video id="myVideo" controls>
+        <source src="video.mp4" type="video/mp4">
+    </video>
+
+    <!-- Skrin Meme (Muncul lepas video tamat) -->
+    <div id="trollScreen">
+        <!-- Pastikan nama fail gambar kat bawah ni sama dengan nama fail kau -->
+        <img id="memeImg" src="meme.jpg" alt="Meme Rick Roll">
+        
+        <button id="nextBtn" onclick="window.location.href='https://play.blooket.com/play'">Next</button>
+    </div>
+
+    <script>
+        var video = document.getElementById("myVideo");
+        var trollScreen = document.getElementById("trollScreen");
+
+        // Tukar skrin kepada meme bila video tamat
+        video.onended = function() {
+            video.style.display = "none";
+            trollScreen.style.display = "flex";
+        };
+    </script>
+</body>
+</html>
